@@ -1,12 +1,12 @@
-name: Run Tests
+name: CI Pipeline with unit and e2e tests
 
 on:
   push:
     branches:
-      - "**" # Trigger on push to any branch
+      - '**'
   pull_request:
     branches:
-      - main # Trigger on pull request targeting the main branch
+      - main
 
 jobs:
   build:
@@ -16,19 +16,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "18"
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
 
-      - name: Install dependencies
-        run: npm install
+      - name: Build Docker image
+        run:
+          docker build -t the-holocron-app .
+
+      - name: Run Docker container
+        run: docker run --name the-holocron-app-container -d the-holocron-app
 
       - name: Run unit tests
-        run: npm run test
+        run: docker exec the-holocron-app-container npm run test
 
-      - name: Run e2e tests
-        run: npm run cypress:run 
-        env:
-          CI: true # Ensures tests run in Continuous Integration mode
+      - name: Run Cypress tests
+        run: docker exec the-holocron-app-container npm run cypress:run
 
+      - name: Stop and remove Docker container
+        run: |
+          docker stop the-holocron-app-container
+          docker rm the-holocron-app-container
