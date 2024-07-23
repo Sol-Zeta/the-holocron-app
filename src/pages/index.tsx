@@ -12,7 +12,6 @@ interface HomeProps {
 }
 
 const Home: FC<HomeProps> = ({ characters }) => {
-  console.log({ characters });
   return (
     <>
       <Head>
@@ -36,7 +35,6 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async (
   context
 ) => {
   const data = await getCharactersByPage();
-  console.log({ data });
   if (!data)
     return {
       props: {},

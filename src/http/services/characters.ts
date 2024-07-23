@@ -9,7 +9,7 @@ export const getCharactersByPage = async (
     const response = await axiosInstance.get(SWAPI_URL);
     return response.data;
   } catch (error) {
-    console.log({ error });
+    console.error({ error });
     return;
   }
 };
