@@ -22,8 +22,11 @@
       }
     ],
     "paths": {
-      "@/src/components/*": [
-        "./src/*"
+      "@/components/*": [
+        "./src/components/*"
+      ],
+      "@/styles/*": [
+        "./src/styles/*"
       ]
     },
     "types": [
