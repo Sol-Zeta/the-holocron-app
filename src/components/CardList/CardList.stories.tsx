@@ -1,12 +1,12 @@
-/* eslint-disable */
-import CardList from '.';
+// /* eslint-disable */
+// import CardList from '.';
 
-export default {
-  title: "CardList",
-};
+// export default {
+//   title: "CardList",
+// };
 
-export const Default = () => <CardList />;
+// export const Default = () => <CardList />;
 
-Default.story = {
-  name: 'default',
-};
+// Default.story = {
+//   name: 'default',
+// };
