@@ -5,10 +5,7 @@ import CardList from '.';
 
 describe('<CardList />', () => {
   test('it should mount', () => {
-    render(<CardList />);
-
-    const CardList = screen.getByTestId('CardList');
-
-    expect(CardList).toBeInTheDocument();
+    render(<CardList cards={[]}/>);
+    screen.getByTestId('CardList');
   });
 });
