@@ -9,4 +9,9 @@ describe('<Card />', () => {
     const card = screen.getByTestId('Card');
     expect(card).toBeInTheDocument();
   });
+  it('it should render data.name', () => {
+    render(<Card data={MOCK_CHARACTER} />);
+    const characterName = screen.getByText(MOCK_CHARACTER.name);
+    expect(characterName).toBeInTheDocument();
+  });
 });
