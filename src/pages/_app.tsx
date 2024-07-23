@@ -1,10 +1,15 @@
 import React from 'react';
 import App from 'next/app';
+import ThemeProvider from '@/styles/ThemeProvider';
 
 class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
-    return <Component {...pageProps} />;
+    return (
+      <ThemeProvider>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    );
   }
 }
 
