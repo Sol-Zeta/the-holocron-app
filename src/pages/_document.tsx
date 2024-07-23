@@ -20,7 +20,7 @@ class MyDocument extends Document {
             name="viewport"
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
           />
-          <title>Soledad Pattoglio - Software Developer</title>
+
           <link rel="shortcut icon" href="/images/favicon.ico" />
           <link
             rel="apple-touch-icon"
@@ -38,10 +38,6 @@ class MyDocument extends Document {
             type="image/png"
             sizes="16x16"
             href="/images/favicon-16x16.png"
-          />
-          <meta
-            name="description"
-            content="Welcome to The Holocron App - Explore all the characters from the Star Wars Saga"
           />
         </Head>
         <body>

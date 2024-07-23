@@ -5,6 +5,7 @@ import { GetServerSideProps } from 'next';
 import axios from 'axios';
 import { getCharactersByPage } from '../http/services/characters';
 import { SwapiCharactersResponse } from '../types';
+import Head from 'next/head';
 
 interface HomeProps {
   characters?: SwapiCharactersResponse;
@@ -13,10 +14,19 @@ interface HomeProps {
 const Home: FC<HomeProps> = ({ characters }) => {
   console.log({ characters });
   return (
-    <div className={styles.Home} data-testid="Home">
-      Home Component
-      {characters?.results && <CardList cards={characters.results} />}
-    </div>
+    <>
+      <Head>
+        <title>The Holocron App</title>
+        <meta
+          name="description"
+          content="Welcome to The Holocron App - Explore all the characters from the Star Wars Saga"
+        />
+      </Head>
+      <div className={styles.Home} data-testid="Home">
+        Home Component
+        {characters?.results && <CardList cards={characters.results} />}
+      </div>
+    </>
   );
 };
 
