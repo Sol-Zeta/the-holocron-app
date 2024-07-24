@@ -40,14 +40,16 @@
       "node",
       "jest",
       "@testing-library/jest-dom"
-    ]
+    ],
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "cypress/**/*.ts", "src/components/Card/__tests__/Card.test.jsx",
+    "cypress/**/*.ts",
+    "src/components/Card/__tests__/Card.test.jsx",
+    "src/utils/__tests__/index.js",
   ],
   "exclude": [
     "node_modules",

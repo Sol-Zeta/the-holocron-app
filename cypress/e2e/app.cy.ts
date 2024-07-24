@@ -1,6 +1,6 @@
-describe('My First Test', () => {
-  it('Visits the app', () => {
+describe('App Test', () => {
+  it('Should render the app title', () => {
     cy.visit('/');
-    cy.contains('Home Component');
+    cy.contains('The Holocron');
   });
 });
