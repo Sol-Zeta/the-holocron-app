@@ -89,6 +89,15 @@ const getDesignTokens = (mode: 'light' | 'dark') => ({
         },
       },
     },
+    MuiPagination: {
+      styleOverrides: {
+        root: {
+          '.Mui-selected': {
+            color: COLORS.yellow
+          }
+        }
+      }
+    }
   },
 });
 
