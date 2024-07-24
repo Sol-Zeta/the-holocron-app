@@ -13,9 +13,7 @@ const CardList: FC<CardListProps> = ({ cards }) => (
     container
     direction={'row'}
     justifyContent="center"
-    rowSpacing={3}
-    gap={10}
-    columnSpacing={{ xs: 1, sm: 2, md: 12 }}
+    gap={{ xs: 4, sm: 4, md: 10 }}
   >
     {cards.map((card) => (
       <Card key={card.name} data={card} />

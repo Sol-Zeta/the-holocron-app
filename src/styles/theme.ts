@@ -66,8 +66,8 @@ const getDesignTokens = (mode: 'light' | 'dark') => ({
     MuiCard: {
       styleOverrides: {
         root: {
-          cursor: 'pointer',
-          borderRadius: '16px',
+          borderRadius: '8px',
+          textDecoration: 'none',
           boxShadow: `0 0 0 ${COLORS.shadow}`,
           transform: 'scale(1)',
           transition: 'transform .3s',

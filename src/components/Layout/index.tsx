@@ -17,7 +17,7 @@ const Layout: FC<LayoutProps> = ({ children }) => (
         color="textSecondary"
         gutterBottom
       >
-        Unlock the Galaxy's Secrets
+        Unlock the Galaxy&apos;s Secrets
       </Typography>
     </Box>
     <Divider />

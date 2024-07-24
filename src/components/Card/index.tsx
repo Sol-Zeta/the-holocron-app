@@ -3,13 +3,11 @@ import { Character } from '@/types/index';
 import {
   CardContent,
   CardHeader,
-  CardMedia,
   Card as CardWrapper,
   IconButton,
   Typography,
 } from '@mui/material';
-import Link from 'next/link';
-import { getCharacterId, getDateString } from '@/utils/index';
+import { getDateString } from '@/utils/index';
 import OpenInNewOutlinedIcon from '@mui/icons-material/OpenInNewOutlined';
 
 interface CardProps {
@@ -17,35 +15,33 @@ interface CardProps {
 }
 
 const Card: FC<CardProps> = ({ data }) => {
-  const { name, films, url, created, edited } = data;
-  const cardId = getCharacterId(url);
+  const { name, gender, id, created, edited } = data;
   return (
-    <CardWrapper sx={{ maxWidth: 345 }} data-testid="Card" variant="outlined">
+    <CardWrapper
+      component="a"
+      href={`/${id}`}
+      sx={{ maxWidth: 345, minWidth: 280 }}
+      data-testid="Card"
+      variant="outlined"
+    >
       <CardHeader
         action={
-          <Link href={`/${cardId}`}>
-            <IconButton aria-label="add to favorites" size={'small'}>
-              <OpenInNewOutlinedIcon />
-            </IconButton>
-          </Link>
+          <IconButton aria-label="add to favorites" size={'small'}>
+            <OpenInNewOutlinedIcon />
+          </IconButton>
         }
         title={name}
-        subheader={`Created on ${getDateString(created)}`}
+        subheader={`Gender: ${gender}`}
         titleTypographyProps={{ color: 'text.title' }}
-      />
-      <CardMedia
-        component="img"
-        height="194"
-        image={
-          'https://vignette.wikia.nocookie.net/starwars/images/2/20/LukeTLJ.jpg'
-        }
-        alt={name}
+        subheaderTypographyProps={{ textTransform: 'capitalize' }}
       />
       <CardContent>
-        <Typography
-          variant="body2"
-          color="text.title"
-        >{`Last update: ${getDateString(edited)}`}</Typography>
+        <Typography variant="body2" color="text.primary">
+          {`Created on ${getDateString(created)}`}
+        </Typography>
+        <Typography variant="body2" color="text.primary">
+          {`Update on ${getDateString(edited)}`}
+        </Typography>
       </CardContent>
     </CardWrapper>
   );

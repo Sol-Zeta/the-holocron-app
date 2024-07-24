@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import styles from '@/styles/Home.module.scss';
 import CardList from '@/components/CardList';
 import { GetServerSideProps } from 'next';
-import axios from 'axios';
 import { getCharactersByPage } from '../http/services/characters';
 import { SwapiCharactersResponse } from '../types';
 import Head from 'next/head';
@@ -22,7 +21,6 @@ const Home: FC<HomeProps> = ({ characters }) => {
         />
       </Head>
       <div className={styles.Home} data-testid="Home">
-        Home Component
         {characters?.results && <CardList cards={characters.results} />}
       </div>
     </>
