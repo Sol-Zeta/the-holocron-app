@@ -6,9 +6,11 @@ import Pagination from '../Pagination';
 
 interface CardListProps {
   cards: Character[];
+  page: string;
+  total: number;
 }
 
-const CardList: FC<CardListProps> = ({ cards }) => (
+const CardList: FC<CardListProps> = ({ cards, page, total }) => (
   <Box data-testid="CardList" flexDirection="column" alignItems="center">
     <Grid
       container
@@ -17,11 +19,13 @@ const CardList: FC<CardListProps> = ({ cards }) => (
       gap={{ xs: 4, sm: 4, md: 10 }}
       marginBottom={{ xs: 4, md: 6 }}
     >
-      {cards.map((card) => (
+      {cards?.map((card) => (
         <Card key={card.name} data={card} />
       ))}
     </Grid>
-    <Pagination count={10} />
+    {cards && (
+      <Pagination count={Math.ceil(total / 10)} page={page} />
+    )}
   </Box>
 );
 

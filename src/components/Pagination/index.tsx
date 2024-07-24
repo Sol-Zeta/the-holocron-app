@@ -1,16 +1,27 @@
 import React, { FC } from 'react';
-import styles from './Pagination.module.scss';
-import { Box, Pagination, Stack } from '@mui/material';
+import { Box, Pagination } from '@mui/material';
+import { setPage } from '@/store/slices/characters';
+import { useDispatch } from 'react-redux';
 
 interface PaginationProps {
   count: number;
+  page: string;
 }
 
-const PaginationComponent: FC<PaginationProps> = ({ count }) => {
-  if(!count) return;
+const PaginationComponent: FC<PaginationProps> = ({ count, page }) => {
+  const dispatch = useDispatch();
+  if (!count) return 'no count';
+  const handleChange = (_: React.ChangeEvent<unknown>, newPage: number) => {
+    dispatch(setPage(newPage));
+  };
   return (
-    <Box display='flex' justifyContent='center'>
-      <Pagination count={count} color="standard" />
+    <Box display="flex" justifyContent="center">
+      <Pagination
+        count={count}
+        color="standard"
+        page={Number(page) || 1}
+        onChange={handleChange}
+      />
     </Box>
   );
 };
