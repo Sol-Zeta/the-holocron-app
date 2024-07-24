@@ -2,6 +2,7 @@ import React from 'react';
 import App from 'next/app';
 import ThemeProvider from '@/styles/ThemeProvider';
 import Layout from '@/components/Layout';
+import { storeWrapper } from '@/store/index';
 
 class MyApp extends App {
   render() {
@@ -16,4 +17,4 @@ class MyApp extends App {
   }
 }
 
-export default MyApp;
+export default storeWrapper.withRedux(MyApp);
