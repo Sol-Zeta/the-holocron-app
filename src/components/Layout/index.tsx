@@ -8,7 +8,7 @@ interface LayoutProps {
 const Layout: FC<LayoutProps> = ({ children }) => (
   <Box data-testid="Layout">
     <Box sx={{ textAlign: 'center', margin: '20px 0' }} component="header">
-      <Typography variant="h4" component="h1" gutterBottom>
+      <Typography variant="h4" component="h1" gutterBottom color='text.accent'>
         The Holocron
       </Typography>
       <Typography
