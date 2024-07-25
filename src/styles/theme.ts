@@ -1,52 +1,60 @@
-// styles/customTheme.ts
 import { createTheme } from '@mui/material/styles';
-import { grey } from '@mui/material/colors';
 
-const COLORS = {
+export const COLORS = {
   yellow: '#ffe300',
-  gray: '#bbbbbb',
-  shadow: grey[900],
+  darkGrey: '#555555',
+  grey: '#bbbbbb',
+  lightGray: '#1d1d1d',
+  shadow: '#212121',
+  shadowLight: '#1d1d1d',
+  black: '#121212',
+  darkWhite: '#f5f5f5',
+  white: '#ffffff',
+  blue: '#90caf9',
+  plum: '#ce93d8',
 };
 
-// Define colors for light and dark modes
 const getDesignTokens = (mode: 'light' | 'dark') => ({
   palette: {
     mode,
     ...(mode === 'light'
       ? {
-          // Light mode palette
+          // Light mode
           primary: {
-            main: '#1976d2',
+            main: COLORS.plum,
           },
           secondary: {
-            main: '#9c27b0',
+            main: COLORS.blue,
           },
           background: {
-            default: '#f5f5f5',
-            paper: '#ffffff',
+            default: COLORS.darkWhite,
+            paper: COLORS.white,
           },
           text: {
-            primary: '#000000',
-            secondary: '#555555',
-            title: '#ffe300',
+            primary: COLORS.black,
+            secondary: COLORS.darkGrey,
+            accent: COLORS.plum,
           },
         }
       : {
-          // Dark mode palette
+          // Dark mode
           primary: {
-            main: '#90caf9',
+            main: COLORS.blue,
           },
           secondary: {
-            main: '#ce93d8',
+            main: COLORS.plum,
+          },
+          accent: {
+            main: COLORS.yellow,
           },
           background: {
-            default: '#121212',
-            paper: '#1d1d1d',
+            default: COLORS.black,
+            paper: COLORS.lightGray,
           },
           text: {
-            primary: '#ffffff',
-            secondary: '#bbbbbb',
-            title: '#ffe300',
+            primary: COLORS.black,
+            secondary: COLORS.grey,
+            accent: COLORS.yellow,
           },
         }),
   },
@@ -73,7 +81,7 @@ const getDesignTokens = (mode: 'light' | 'dark') => ({
           transition: 'transform .3s',
           '&:hover': {
             transform: 'scale(1.02)',
-            boxShadow: `0px 2px 8px ${COLORS.shadow}`,
+            boxShadow: `0px 2px 8px ${mode === 'light' ? COLORS.blue : COLORS.shadow}`,
           },
         },
       },
@@ -83,7 +91,7 @@ const getDesignTokens = (mode: 'light' | 'dark') => ({
         root: {
           '& .MuiSvgIcon-root': {
             '&:hover': {
-              color: COLORS.yellow,
+              color: mode === 'light' ? COLORS.blue : COLORS.yellow,
             },
           },
         },
@@ -92,12 +100,13 @@ const getDesignTokens = (mode: 'light' | 'dark') => ({
     MuiPagination: {
       styleOverrides: {
         root: {
-          '.Mui-selected': {
-            color: COLORS.yellow
-          }
-        }
-      }
-    }
+          '& .Mui-selected': {
+            background: mode === 'light' ? COLORS.plum : COLORS.lightGray,
+            color: mode === 'light' ? COLORS.black : COLORS.yellow,
+          },
+        },
+      },
+    },
   },
 });
 

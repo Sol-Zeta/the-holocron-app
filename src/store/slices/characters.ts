@@ -60,6 +60,7 @@ export const charactersSlice: Slice = createSlice({
 
 export const { setCharactersByPage, setPage } = charactersSlice.actions;
 
-export const getCharacters = (state: AppState) => state.characters;
+export const getCharacters = (state: AppState): CharactersState =>
+  state.characters as CharactersState;
 
 export default charactersSlice.reducer;
