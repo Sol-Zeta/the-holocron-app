@@ -32,14 +32,14 @@ const Card: FC<CardProps> = ({ data }) => {
         }
         title={name}
         subheader={`Gender: ${gender}`}
-        titleTypographyProps={{ color: 'text.title' }}
+        titleTypographyProps={{ color: 'text.accent' }}
         subheaderTypographyProps={{ textTransform: 'capitalize' }}
       />
       <CardContent>
-        <Typography variant="body2" color="text.primary">
+        <Typography variant="body2">
           {`Created on ${getDateString(created)}`}
         </Typography>
-        <Typography variant="body2" color="text.primary">
+        <Typography variant="body2">
           {`Update on ${getDateString(edited)}`}
         </Typography>
       </CardContent>
