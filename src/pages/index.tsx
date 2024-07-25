@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useState } from 'react';
-import styles from '@/styles/Home.module.scss';
 import CardList from '@/components/CardList';
 import { GetServerSideProps } from 'next';
 import { getCharactersByPage } from '@/http/services/characters';
@@ -20,13 +19,14 @@ const Home: FC = () => {
   const dispatch = useDispatch();
 
   const setPageParam = (page: string) => {
+    if (!page) return;
     router.push({
       pathname: router.pathname,
       query: { ...router.query, page },
     });
   };
   const retrieveCharacters = async (page: string) => {
-    if (charactersPages[page]) {
+    if (charactersPages?.[page]) {
       return;
     }
     const data = await getCharactersByPage(page as string);
@@ -57,8 +57,8 @@ const Home: FC = () => {
           content="Welcome to The Holocron App - Explore all the characters from the Star Wars Saga"
         />
       </Head>
-      <div className={styles.Home} data-testid="Home">
-        {charactersPages[page] && (
+      <div data-testid="Home">
+        {charactersPages?.[page] && (
           <CardList cards={charactersPages[page]} page={page} total={total} />
         )}
       </div>
