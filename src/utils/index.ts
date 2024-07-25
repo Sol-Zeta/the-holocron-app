@@ -15,3 +15,8 @@ export const getDateString = (dateString: string) => {
   const formattedDate = date.toLocaleDateString('en-US', options);
   return formattedDate;
 };
+
+export const formatAttribute = (attribute: string) => {
+  const withSpaces = attribute.replace(/_/g, ' ');
+  return withSpaces.charAt(0).toUpperCase() + withSpaces.slice(1);
+};
