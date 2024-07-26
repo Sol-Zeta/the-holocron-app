@@ -52,7 +52,7 @@ const getDesignTokens = (mode: 'light' | 'dark') => ({
             paper: COLORS.lightGray,
           },
           text: {
-            primary: COLORS.black,
+            primary: COLORS.darkWhite,
             secondary: COLORS.grey,
             accent: COLORS.yellow,
           },
