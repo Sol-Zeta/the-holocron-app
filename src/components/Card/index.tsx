@@ -36,10 +36,10 @@ const Card: FC<CardProps> = ({ data }) => {
         subheaderTypographyProps={{ textTransform: 'capitalize' }}
       />
       <CardContent>
-        <Typography variant="body2">
+        <Typography variant="body2" color='text.secondary'>
           {`Created on ${getDateString(created)}`}
         </Typography>
-        <Typography variant="body2">
+        <Typography variant="body2" color='text.secondary'>
           {`Update on ${getDateString(edited)}`}
         </Typography>
       </CardContent>
