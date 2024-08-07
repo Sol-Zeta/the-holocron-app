@@ -8,17 +8,19 @@ This is a frontend web application developed with **React.js**.
 
 #### Among other things, it is able to:
 
-- **_Show_** a list of characters from the Star Wars Saga.
+- **_Show_** a paginated list of characters from the Star Wars Saga.
 - **_Show_** the details of each character.
 - **_Filter_** the list of characters.
-- **_Navigate_** between pages.
+- **_Navigate_** between list pages.
 
 #### 🧩 Tech Stack used:
 
-- ReactJS
-- (styles)
-- **Unit testing**: Jest
-- **e2e testing**: Cypress
+- **ReactJS**
+- **NextJS**
+- **TypeScript**
+- **Material UI**
+- **Jest** (Unit testing)
+- **Cypress** (e2e testing)
 
 ## Future improvements:
 
@@ -36,7 +38,7 @@ To install the dependencies, run:
 
 To start the development server, use:
 
-    npm run start
+    npm run dev
 
 ### Production
 
