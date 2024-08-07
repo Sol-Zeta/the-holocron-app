@@ -2,7 +2,7 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import CardList from '.';
-import { MOCK_CHARACTERS_LIST } from '../../__mocks__/charactersList';
+import { MOCK_CHARACTERS_LIST } from '../../utils/__mocks__/charactersList';
 import { renderWithRedux } from '../../utils/test-utils';
 
 describe('<CardList />', () => {

@@ -1,7 +1,6 @@
 import { Character, CharacterFullData, SwapiCharactersResponse } from '@/types/index';
 import axiosInstance, { isValidUrl } from '../utils';
 import { getCharacterId } from '@/utils/index';
-import { AxiosResponse } from 'axios';
 
 const addIdToCharacter = (charactersData: SwapiCharactersResponse) => {
   const results = charactersData.results.map((character) => ({

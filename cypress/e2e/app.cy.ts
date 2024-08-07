@@ -1,6 +1,8 @@
-describe('App Test', () => {
-  it('Should render the app title', () => {
+describe('App', () => {
+  it('Should render the title and subtitle in root detail pages', () => {
     cy.visit('/');
-    cy.contains('The Holocron');
+    cy.checkAppHeader();
+    cy.visit('/42');
+    cy.checkAppHeader();
   });
 });

@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Card from '.';
-import { MOCK_CHARACTER } from '../../__mocks__/character';
+import { MOCK_CHARACTER } from '../../utils/__mocks__/character';
 
 describe('<Card />', () => {
   it('it should mount', () => {

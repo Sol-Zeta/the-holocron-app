@@ -17,8 +17,21 @@ describe('In root page "/"', () => {
       cy.wrap($card).should('contain.text', searchTerm);
     });
   });
-
   it('A pagination component should be rendered in the root page', () => {
+    cy.scrollTo('bottom');
     cy.get('[data-testid="Pagination"]').scrollIntoView().should('be.visible');
+  });
+
+  it('should highlight the active page based on the URL query parameter', () => {
+    cy.scrollTo('bottom');
+    cy.checkActivePage(1);
+
+    cy.visit('/?page=2');
+    cy.scrollTo('bottom');
+    cy.checkActivePage(2);
+
+    cy.visit('/?page=3');
+    cy.scrollTo('bottom');
+    cy.checkActivePage(3);
   });
 });
