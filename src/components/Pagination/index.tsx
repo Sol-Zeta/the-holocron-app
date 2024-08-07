@@ -15,7 +15,7 @@ const PaginationComponent: FC<PaginationProps> = ({ count, page }) => {
     dispatch(setPage(newPage));
   };
   return (
-    <Box display="flex" justifyContent="center">
+    <Box display="flex" justifyContent="center" data-testid='Pagination'>
       <Pagination
         count={count}
         color="standard"
