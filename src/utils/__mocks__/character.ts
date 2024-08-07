@@ -1,4 +1,4 @@
-import { Character } from "../types";
+import { Character } from "../../types";
 
 export const MOCK_CHARACTER: Character = {
   name: 'Anakin Skywalker',
