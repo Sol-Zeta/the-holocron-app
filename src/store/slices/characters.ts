@@ -1,8 +1,9 @@
-import { createReducer, createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction, Slice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import type { Slice } from '@reduxjs/toolkit';
 import { HYDRATE } from 'next-redux-wrapper';
 import { Character } from '@/types/index';
 import { AppState } from '@/store/index';
+import { filterItems } from '../utils';
 
 interface CharacterPages {
   [key: string]: Character[];
@@ -13,7 +14,7 @@ export interface CharactersState {
   next: string;
   previous: string;
   charactersPages: CharacterPages;
-  filteredCharacters: Character[];
+  filterTerm: string;
   error: string | null;
 }
 
@@ -23,7 +24,7 @@ const initialState: CharactersState = {
   next: '',
   previous: '',
   charactersPages: {},
-  filteredCharacters: [],
+  filterTerm: '',
   error: '',
 };
 
@@ -33,6 +34,7 @@ export const charactersSlice: Slice = createSlice({
   reducers: {
     setCharactersByPage: (state, action) => {
       const { characters, total, next, previous } = action.payload;
+      console.log('set char')
       state.charactersPages[state.page] = characters;
       state.total = total;
       state.next = next;
@@ -41,9 +43,13 @@ export const charactersSlice: Slice = createSlice({
     setPage: (state, action) => {
       state.page = action.payload;
     },
+    setFilterTerm: (state, action) => {
+      state.filterTerm = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(HYDRATE, (state, action: any) => {
+      console.log('hidrating')
       const page = action.payload.characters.page;
       const total = action.payload.characters.total;
       const next = action.payload.characters.next;
@@ -58,9 +64,13 @@ export const charactersSlice: Slice = createSlice({
   },
 });
 
-export const { setCharactersByPage, setPage } = charactersSlice.actions;
+export const { setCharactersByPage, setPage, setFilterTerm } =
+  charactersSlice.actions;
 
 export const getCharacters = (state: AppState): CharactersState =>
   state.characters as CharactersState;
+
+export const getFilteredCharacters = (state: AppState): Character[] =>
+  filterItems(state.characters.filterTerm, state.characters.charactersPages[state.characters.page]);
 
 export default charactersSlice.reducer;

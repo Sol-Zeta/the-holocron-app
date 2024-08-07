@@ -1,19 +1,17 @@
-// // setFilteredCharacters: (state, action) => {
-// //     return {
-// //       ...state,
-// //       filteredCharacters: filterItems(action.payload, state.charactersPages),
-// //     };
-// //   },
+import { Character } from '@/types/index';
 
-// const filterItems = (filterTerm: string, items: CharacterPages) => {
-//   const filteredItems: CharacterPages = {};
-//   for (const key in items) {
-//     if (Object.prototype.hasOwnProperty.call(items, key)) {
-//       const content = Object.values(items[key].join(' '));
-//       if (content.includes(filterTerm)) {
-//         filteredItems[key] = items[key];
-//       }
-//     }
-//   }
-//   return filteredItems;
-// };
+export const filterItems = (filterTerm: string, characters: Character[]) => {
+  if (!characters) return [];
+  if (!filterTerm) return characters;
+  const filteredItems: Character[] = [];
+  for (let i = 0; i < characters.length; i++) {
+    const characterData = Object.values(characters[i])
+      .filter((item) => typeof item === 'string')
+      .map((item) => item.toLowerCase())
+      .join(' ');
+    if (characterData.includes(filterTerm.toLowerCase())) {
+      filteredItems.push(characters[i]);
+    }
+  }
+  return filteredItems;
+};
