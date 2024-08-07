@@ -7,14 +7,7 @@ import { renderWithRedux } from '../../utils/test-utils';
 
 describe('<CardList />', () => {
   test('it should mount', () => {
-    const initialState = {
-      page: '1',
-      total: 0,
-      charactersPages: {},
-    };
-    renderWithRedux(<CardList cards={[]} page={'1'} total={1} />, {
-      initialState,
-    });
+    renderWithRedux(<CardList cards={[]} page={'1'} total={1} />);
     screen.getByTestId('CardList');
   });
   test('it should render one card per item in cards props', () => {
