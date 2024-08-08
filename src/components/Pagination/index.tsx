@@ -10,7 +10,6 @@ interface PaginationProps {
 
 const PaginationComponent: FC<PaginationProps> = ({ count, page }) => {
   const dispatch = useDispatch();
-  if (!count) return 'no count';
   const handleChange = (_: React.ChangeEvent<unknown>, newPage: number) => {
     dispatch(setPage(newPage));
   };

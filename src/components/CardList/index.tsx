@@ -23,9 +23,7 @@ const CardList: FC<CardListProps> = ({ cards, page, total }) => (
         <Card key={card.name} data={card} />
       ))}
     </Grid>
-    {total && (
-      <Pagination count={Math.ceil(total / 10)} page={page} />
-    )}
+    {total > 0 ? <Pagination count={Math.ceil(total / 10)} page={page} /> : null}
   </Box>
 );
 
