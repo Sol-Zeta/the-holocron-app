@@ -1,5 +1,9 @@
 describe('In root page "/"', () => {
   beforeEach(() => cy.visit('/?page=1'));
+  it('The header with title and subtitle should be visible', () => {
+    cy.visit('/');
+    cy.checkAppHeader();
+  });
   it('A list of cards should be rendered in the root page', () => {
     cy.get('[data-testid="CardList"]').should('be.visible');
     cy.get('[data-testid="Pagination"]').scrollIntoView().should('be.visible');
@@ -22,16 +26,9 @@ describe('In root page "/"', () => {
     cy.get('[data-testid="Pagination"]').scrollIntoView().should('be.visible');
   });
 
-  it('should highlight the active page based on the URL query parameter', () => {
-    cy.scrollTo('bottom');
+  it('The current page should be highlighted in the Pagination component', () => {
     cy.checkActivePage(1);
-
-    cy.visit('/?page=2');
-    cy.scrollTo('bottom');
     cy.checkActivePage(2);
-
-    cy.visit('/?page=3');
-    cy.scrollTo('bottom');
     cy.checkActivePage(3);
   });
 });
