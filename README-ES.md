@@ -24,7 +24,8 @@ Esta es una aplicación web frontend desarrollada con **React.js**.
 
 ## Mejoras futuras:
 
-- ()
+- Crear un componente para seleccionar entre los modos Dark y Light
+
 
 ## Instalación
 

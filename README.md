@@ -24,7 +24,7 @@ This is a frontend web application developed with **React.js**.
 
 ## Future improvements:
 
-- ()
+- Create a Dark/Light selector component to show different style themes
 
 ## Install
 
