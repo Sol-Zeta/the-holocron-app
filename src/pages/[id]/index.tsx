@@ -1,6 +1,15 @@
 import { GetServerSideProps } from 'next';
 import { FC } from 'react';
-import { Typography, Grid, List, ListItem, Box } from '@mui/material';
+import {
+  Typography,
+  Grid,
+  List,
+  ListItem,
+  Box,
+  Link,
+  IconButton,
+} from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { CharacterFullData, CharacterSubobject } from '@/types/index';
 import { getFullCharacterData } from '@/http/services/characters';
 import { MEASUREMENT_UNIT } from '@/types/enums';
@@ -38,6 +47,7 @@ const CharacterPage: FC<CharacterPageProps> = ({ character }) => {
   return (
     <CenteredContainer>
       <Typography
+        data-testid="DetailTitle"
         fontSize={{ xs: 24, md: 32 }}
         variant="h3"
         margin="0 0 10px 0"
@@ -95,6 +105,13 @@ const CharacterPage: FC<CharacterPageProps> = ({ character }) => {
           </DetailSection>
         </Grid>
       </DetailPaper>
+      <Link href="/" data-testid='BackLink'>
+        <Box display='flex' alignItems='center' gap={2} mt={2}>
+          <ArrowBackIcon />
+          Back to list
+        </Box>
+      </Link>
+      <IconButton aria-label="add to favorites" size={'small'}></IconButton>
     </CenteredContainer>
   );
 };
