@@ -4,10 +4,12 @@ describe('In detail page "/{id}"', () => {
     cy.checkAppHeader();
   });
   it('When the user clicks on the "back to list" link, app should redirect to root page', () => {
+    const { baseUrl } = Cypress.config();
     cy.scrollTo('bottom');
-    cy.get('[data-testid="BackLink"]').scrollIntoView().should('be.visible');
-    
-    cy.get('[data-testid="BackLink"]').scrollIntoView().click();
-    cy.url().should('eq', `${Cypress.config().baseUrl}/`);
+    const backLink = cy.get('[data-testid="BackLink"]');
+    backLink.scrollIntoView().should('be.visible');
+
+    backLink.click();
+    cy.url().should('eq', `${baseUrl}/`);
   });
 });
