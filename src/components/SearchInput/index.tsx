@@ -23,13 +23,13 @@ const SearchInput = () => {
 
   useEffect(() => {
     dispatch(setFilterTerm(debouncedValue));
-  }, [debouncedValue]);
+  }, [debouncedValue, dispatch]);
 
   return (
-    <SearchContainer data-testid='SearchInput'>
+    <SearchContainer data-testid="SearchInput">
       <StyledInput
         id="input-element"
-        data-testid='Input'
+        data-testid="Input"
         startAdornment={
           <InputAdornment position="start">
             <SearchIcon />
