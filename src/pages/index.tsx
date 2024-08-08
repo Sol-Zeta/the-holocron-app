@@ -54,7 +54,7 @@ const Home: FC = () => {
       return;
     }
     retrieveCharacters(page, dispatch);
-  }, [page]);
+  }, [page, dispatch, isFirstLoad, retrieveCharacters, setPageParam]);
 
   return (
     <>
