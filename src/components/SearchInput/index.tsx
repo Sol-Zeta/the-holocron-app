@@ -28,7 +28,8 @@ const SearchInput = () => {
   return (
     <SearchContainer data-testid='SearchInput'>
       <StyledInput
-        id="input-with-icon-adornment"
+        id="input-element"
+        data-testid='Input'
         startAdornment={
           <InputAdornment position="start">
             <SearchIcon />
