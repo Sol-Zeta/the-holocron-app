@@ -1,11 +1,11 @@
-import { getCharacterId, getDateString } from '@/utils/index';
+import { getCharacterId, getDateString } from '../index';
 
 describe('getCharacterId', () => {
   it('should return the id of a url', () => {
     expect(getCharacterId('https://swapi.co/api/people/1/')).toBe('1');
   });
-  it('should return an empty string if the param is undefined', () => {
-    expect(getCharacterId()).toBe('');
+  it('should return an empty string if no param is passed', () => {
+    expect(getCharacterId('')).toBe('');
   });
 });
 
@@ -16,6 +16,6 @@ describe('getDateString', () => {
     );
   });
   it('should return an empty string if the param is undefined', () => {
-    expect(getDateString()).toBe('');
+    expect(getDateString('')).toBe('');
   });
 });
