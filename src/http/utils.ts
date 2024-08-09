@@ -7,12 +7,4 @@ const http = axios.create({
 
 export default http;
 
-export const isValidUrl = (url: string): boolean => {
-  if (typeof url !== 'string') return false;
-  try {
-    new URL(url);
-    return true;
-  } catch (_) {
-    return false;
-  }
-};
+export const SWAPI_URL = 'https://swapi.trileuco.com/api/people/';

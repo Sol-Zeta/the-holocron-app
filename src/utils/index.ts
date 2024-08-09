@@ -20,3 +20,13 @@ export const formatAttribute = (attribute: string) => {
   const withSpaces = attribute.replace(/_/g, ' ');
   return withSpaces.charAt(0).toUpperCase() + withSpaces.slice(1);
 };
+
+export const isValidUrl = (url: string): boolean => {
+  if (typeof url !== 'string') return false;
+  try {
+    new URL(url);
+    return true;
+  } catch (_) {
+    return false;
+  }
+};

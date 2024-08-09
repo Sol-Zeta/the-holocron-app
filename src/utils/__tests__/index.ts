@@ -1,4 +1,9 @@
-import { formatAttribute, getCharacterId, getDateString } from '../index';
+import {
+  formatAttribute,
+  getCharacterId,
+  getDateString,
+  isValidUrl,
+} from '../index';
 
 describe('getCharacterId', () => {
   it('should return the id of a url', () => {
@@ -28,5 +33,26 @@ describe('formatAttribute', () => {
   });
   it('should return an empty string if the param is undefined', () => {
     expect(getDateString('')).toBe('');
+  });
+});
+
+describe('isValidUrl', () => {
+  it('should return true for a valid URL', () => {
+    expect(isValidUrl('https://www.example.com')).toBe(true);
+    expect(isValidUrl('http://example.com')).toBe(true);
+    expect(isValidUrl('https://example.com/path?query=param')).toBe(true);
+  });
+
+  it('should return false for an invalid URL', () => {
+    expect(isValidUrl('not-a-url')).toBe(false);
+    expect(isValidUrl('')).toBe(false);
+    expect(isValidUrl('https://')).toBe(false);
+  });
+
+  it('should return false for non-string values', () => {
+    expect(isValidUrl(123 as any)).toBe(false);
+    expect(isValidUrl({} as any)).toBe(false);
+    expect(isValidUrl([] as any)).toBe(false);
+    expect(isValidUrl(null as any)).toBe(false);
   });
 });
