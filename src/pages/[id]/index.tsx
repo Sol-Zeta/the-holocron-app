@@ -8,8 +8,8 @@ import {
   Box,
   Link,
   IconButton,
+  Button,
 } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { CharacterFullData, CharacterSubobject } from '@/types/index';
 import { getFullCharacterData } from '@/http/services/characters';
 import { MEASUREMENT_UNIT } from '@/types/enums';
@@ -20,6 +20,7 @@ import {
   StyledChip,
 } from '@/styles/Details.module';
 import { formatAttribute } from '@/utils/index';
+import { useRouter } from 'next/router';
 
 interface CharacterPageProps {
   character: CharacterFullData;
@@ -44,6 +45,7 @@ const CharacterPage: FC<CharacterPageProps> = ({ character }) => {
     starships,
     species,
   };
+  const router = useRouter();
   return (
     <CenteredContainer>
       <Typography
@@ -105,12 +107,13 @@ const CharacterPage: FC<CharacterPageProps> = ({ character }) => {
           </DetailSection>
         </Grid>
       </DetailPaper>
-      <Link href="/" data-testid='BackLink'>
-        <Box display='flex' alignItems='center' gap={2} mt={2}>
-          <ArrowBackIcon />
-          Back to list
-        </Box>
-      </Link>
+      <Button
+        data-testid="BackButton"
+        variant="contained"
+        onClick={() => router.push('/')}
+      >
+        Back to the Holocron
+      </Button>
       <IconButton aria-label="add to favorites" size={'small'}></IconButton>
     </CenteredContainer>
   );
@@ -118,12 +121,39 @@ const CharacterPage: FC<CharacterPageProps> = ({ character }) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.query;
-  const character = await getFullCharacterData(id as string);
-  return {
-    props: {
-      character,
-    },
-  };
+
+  try {
+    const character = await getFullCharacterData(id as string);
+
+    if (!character) {
+      // Redirect to the error page if the character is not found
+      return {
+        redirect: {
+          destination: '/_error',
+          permanent: false,
+        },
+      };
+    }
+
+    return {
+      props: {
+        character,
+      },
+    };
+  } catch (error) {
+    // Log the error for debugging purposes
+    // console.error('Failed to fetch character data:', error);
+
+    // Redirect to the error page if an error occurs during data fetching
+    const statusCode = (error as any).statusCode || 500;
+    return {
+      props: {
+        error: {
+          statusCode: 101,
+        },
+      },
+    };
+  }
 };
 
 export default CharacterPage;
