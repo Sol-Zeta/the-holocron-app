@@ -75,7 +75,7 @@ const getDesignTokens = (mode: 'light' | 'dark') => ({
       styleOverrides: {
         root: {
           backgroundColor: COLORS.yellow,
-          fontWeight: 600
+          fontWeight: 600,
         },
       },
     },
