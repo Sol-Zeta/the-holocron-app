@@ -71,6 +71,14 @@ const getDesignTokens = (mode: 'light' | 'dark') => ({
   },
   spacing: 8,
   components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          backgroundColor: COLORS.yellow,
+          fontWeight: 600
+        },
+      },
+    },
     MuiCard: {
       styleOverrides: {
         root: {
@@ -81,7 +89,9 @@ const getDesignTokens = (mode: 'light' | 'dark') => ({
           transition: 'transform .3s',
           '&:hover': {
             transform: 'scale(1.02)',
-            boxShadow: `0px 2px 8px ${mode === 'light' ? COLORS.blue : COLORS.shadow}`,
+            boxShadow: `0px 2px 8px ${
+              mode === 'light' ? COLORS.blue : COLORS.shadow
+            }`,
           },
         },
       },

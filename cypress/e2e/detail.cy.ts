@@ -6,7 +6,7 @@ describe('In detail page "/{id}"', () => {
   it('When the user clicks on the "back to list" link, app should redirect to root page', () => {
     const { baseUrl } = Cypress.config();
     cy.scrollTo('bottom');
-    const backLink = cy.get('[data-testid="BackLink"]');
+    const backLink = cy.get('[data-testid="BackButton"]');
     backLink.scrollIntoView().should('be.visible');
 
     backLink.click();

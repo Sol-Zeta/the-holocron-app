@@ -49,7 +49,7 @@ export const getCharacterById = async (
     return response.data;
   } catch (error) {
     console.error({ error });
-    return;
+    throw error;
   }
 };
 
@@ -61,7 +61,7 @@ export const getCharacterData = async (
     return response.data;
   } catch (error) {
     console.error({ error });
-    return;
+    throw error;
   }
 };
 
@@ -100,6 +100,6 @@ export const getFullCharacterData = async (
     return Object.fromEntries(resolvedData) as CharacterFullData;
   } catch (error) {
     console.error({ error });
-    return null;
+    throw error;
   }
 };

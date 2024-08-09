@@ -12,6 +12,7 @@ export const DetailPaper = styled(Paper)(({ theme }) => ({
   maxWidth: 800,
   width: '100%',
   textAlign: 'center',
+  marginBottom: theme.spacing(3)
 }));
 
 export const DetailSection = styled(Grid)(({ theme }) => ({
