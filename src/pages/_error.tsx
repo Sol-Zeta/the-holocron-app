@@ -19,7 +19,7 @@ const ErrorPage: FC = () => {
       }}
     >
       <Typography fontSize="1.8em" color="text.accent" mb={2}>
-        vaj rampu'DI' vay'
+        vaj rampu&apos;DI&apos; vay&apos;
       </Typography>
       <Typography fontSize="1.2em" mb={6}>
         / something went wrong /
