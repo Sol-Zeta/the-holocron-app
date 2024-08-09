@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import Card from '.';
 import { MOCK_CHARACTER } from '../../utils/__mocks__/character';
 import { renderWithRedux } from '../../utils/test-utils';
