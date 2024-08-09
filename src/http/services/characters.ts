@@ -1,6 +1,10 @@
-import { Character, CharacterFullData, SwapiCharactersResponse } from '@/types/index';
-import axiosInstance, { isValidUrl } from '../utils';
-import { getCharacterId } from '@/utils/index';
+import {
+  Character,
+  CharacterFullData,
+  SwapiCharactersResponse,
+} from '@/types/index';
+import axiosInstance, { SWAPI_URL } from '@/http/utils';
+import { getCharacterId, isValidUrl } from '@/utils/index';
 
 const addIdToCharacter = (charactersData: SwapiCharactersResponse) => {
   const results = charactersData.results.map((character) => ({
@@ -13,9 +17,9 @@ const addIdToCharacter = (charactersData: SwapiCharactersResponse) => {
 export const getCharactersByPage = async (
   page = '1'
 ): Promise<SwapiCharactersResponse | undefined> => {
-  const SWAPI_URL = `https://swapi.trileuco.com/api/people/?page=${page}`;
+  const url = `${SWAPI_URL}?page=${page}`;
   try {
-    const response = await axiosInstance.get(SWAPI_URL);
+    const response = await axiosInstance.get(url);
     return addIdToCharacter(response.data);
   } catch (error) {
     console.error({ error });
@@ -26,9 +30,9 @@ export const getCharactersByPage = async (
 export const getSpecies = async (
   page = 1
 ): Promise<SwapiCharactersResponse | undefined> => {
-  const SWAPI_URL = `https://swapi.trileuco.com/api/people/?page=${page}`;
+  const url = `${SWAPI_URL}/?page=${page}`;
   try {
-    const response = await axiosInstance.get(SWAPI_URL);
+    const response = await axiosInstance.get(url);
     return addIdToCharacter(response.data);
   } catch (error) {
     console.error({ error });
@@ -39,9 +43,9 @@ export const getSpecies = async (
 export const getCharacterById = async (
   id: string
 ): Promise<Character | undefined> => {
-  const SWAPI_URL = `https://swapi.trileuco.com/api/people/${id}`;
+  const url = `${SWAPI_URL}${id}`;
   try {
-    const response = await axiosInstance.get(SWAPI_URL);
+    const response = await axiosInstance.get(url);
     return response.data;
   } catch (error) {
     console.error({ error });

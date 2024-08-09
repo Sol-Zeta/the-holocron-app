@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { configureStore, Dispatch } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import { render, RenderOptions } from '@testing-library/react';
 import charactersReducer, { CharactersState } from '@/store/slices/characters';
@@ -9,7 +9,6 @@ import { Store } from 'redux';
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
   initialState?: CharactersState;
   store?: Store<CharactersState>;
-  dispatch?: Dispatch; 
 }
 
 export const renderWithRedux = (

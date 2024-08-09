@@ -70,7 +70,7 @@ const CharacterPage: FC<CharacterPageProps> = ({ character }) => {
             ))}
             <Box>
               <Typography variant="h6">Homeworld</Typography>
-              <Typography paragraph>{character.homeworld.name}</Typography>
+              <Typography paragraph>{homeworld.name}</Typography>
             </Box>
           </DetailSection>
           <DetailSection item xs={12} md={6}>
