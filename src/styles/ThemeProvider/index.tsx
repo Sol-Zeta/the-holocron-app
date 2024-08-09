@@ -1,4 +1,3 @@
-// components/ThemeProvider.tsx
 import React, {
   createContext,
   useContext,

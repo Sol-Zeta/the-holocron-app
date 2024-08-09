@@ -3,8 +3,6 @@ export interface CharacterSubobject {
   title?: string;
 }
 
-// type CharacterSubobject = Subobject | Subobject[]
-
 export interface Character {
   id?: string;
   name: string;
