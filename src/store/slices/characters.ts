@@ -34,7 +34,6 @@ export const charactersSlice: Slice = createSlice({
   reducers: {
     setCharactersByPage: (state, action) => {
       const { characters, total, next, previous } = action.payload;
-      console.log('set char')
       state.charactersPages[state.page] = characters;
       state.total = total;
       state.next = next;
@@ -49,7 +48,6 @@ export const charactersSlice: Slice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(HYDRATE, (state, action: any) => {
-      console.log('hidrating')
       const page = action.payload.characters.page;
       const total = action.payload.characters.total;
       const next = action.payload.characters.next;
