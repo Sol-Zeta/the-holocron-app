@@ -1,51 +1,41 @@
-# The Holocron (React.js application)
+# The Holocron (React.js & Next.js Application)
 
 ![Version](https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000)
 
-**Este README también está disponible en [español](./README-ES.md).**
+**Este README también está disponible en [Español](./README.md).**
 
-This is a frontend web application developed with **React.js**.
+## Main Features
 
-#### Among other things, it is able to:
+- **🗂️ Pagination:** Navigate through a paginated list of characters.
+- **🔍 Search and Filter:** Filter and search characters in the current page's list.
+- **📜 Details:** Display complete details about each character.
 
-- **_Show_** a paginated list of characters from the Star Wars Saga.
-- **_Show_** the details of each character.
-- **_Filter_** the list of characters.
-- **_Navigate_** between list pages.
+## Technologies Used
 
-#### 🧩 Tech Stack used:
+- **ReactJS:** Library for building user interfaces.
+- **NextJS:** Framework for React applications with server-side rendering.
+- **TypeScript:** Superset of JavaScript with static typing.
+- **Material UI:** Library of user interface components.
+- **Testing Library:** Library for unit testing.
+- **Cypress:** Tool for end-to-end (e2e) testing.
 
-- **ReactJS**
-- **NextJS**
-- **TypeScript**
-- **Material UI**
-- **Jest** (Unit testing)
-- **Cypress** (e2e testing)
-
-## Future improvements:
-
-- Create a Dark/Light selector component to show different style themes
-
-## Install
+## Installation
 
 To install the dependencies, run:
 
     npm install
 
 ## Usage
-
 ### Development
 
-To start the development server, use:
+To start the development server:
 
     npm run dev
 
 ### Production
-
 To build and start the production version:
 
-    npm run build
-    npm run start
+    npm run build && npm run start
 
 ### Docker
 
@@ -53,31 +43,41 @@ To build and run the application using Docker:
 
 1.  **Build the Docker image:**
 
-    docker build -t the-holocron .
+    docker build -t the-holocron-app .
 
 2.  **Run the Docker container:**
 
-        docker run -p 3000:3000 the-holocron
+        docker run -p 3000:3000 the-holocron-app
 
-    This will start the application on [http://localhost:3000](http://localhost:3000).
+    This will start the application at  [http://localhost:3000](http://localhost:3000).
 
-## Run tests
+## Run Tests
 
-### Unit
+### Unit Tests
 
 To run unit tests:
 
     npm run test
 
-### e2e
+### e2e Tests
 
 To run end-to-end tests with Cypress:
 
     npm run cypress:open
 
+## Continuous Integration
+
+The project uses **GitHub Actions** to ensure code quality. The workflow is triggered on every push to any branch and performs the following actions:
+
+1. **Build the Docker Image**
+2. **Run the Docker Container**
+3. **Run Unit Tests inside the container**
+4. **Run e2e Tests inside the container**
+5. **Stop and Remove the Docker Container**
+
 ## JIRA Board
 
-Track the project's progress and view the tasks on the [JIRA board](https://soledadpattoglio.atlassian.net/jira/software/projects/TH/boards/3)
+You can see the project's planning and division into user stories on the following [JIRA board](https://soledadpattoglio.atlassian.net/jira/software/projects/TH/boards/3).
 
 ## Author
 
@@ -85,8 +85,4 @@ Track the project's progress and view the tasks on the [JIRA board](https://sole
 
 - [Portfolio](https://www.soledadpattoglio.tech/)
 - [LinkedIn](https://www.linkedin.com/in/mspattoglio/)
-- [Github](https://github.com/Sol-Zeta)
-
----
-
-Give a ⭐️ if this project helped you!
+- [GitHub](https://github.com/Sol-Zeta)
