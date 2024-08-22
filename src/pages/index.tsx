@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import CardList from '@/components/CardList';
 import { GetServerSideProps } from 'next';
 import { getCharactersByPage } from '@/http/services/characters';
@@ -23,35 +23,31 @@ const Home: FC = () => {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const setPageParam = useCallback(
-    (page: string) => {
-      if (!page) return;
-      router.push({
-        pathname: router.pathname,
-        query: { ...router.query, page },
-      });
-    },
-    [router]
-  );
+  const setPageParam = (page: string) => {
+    if (!page || router.query.page === page) return;
+    router.push({
+      pathname: router.pathname,
+      query: { ...router.query, page },
+    });
+  };
 
-  // Wrap the function in useCallback to avoid unnecessary re-renders
-  const retrieveCharacters = useCallback(
-    async (page: string, dispatch: Dispatch<UnknownAction>) => {
-      if (charactersToShow) {
-        return;
-      }
-      const data = await getCharactersByPage(page as string);
-      dispatch(
-        setCharactersByPage({
-          characters: data?.results || {},
-          total: data?.count,
-          previous: data?.previous,
-          next: data?.next,
-        })
-      );
-    },
-    [charactersToShow]
-  );
+  const retrieveCharacters = async (
+    page: string,
+    dispatch: Dispatch<UnknownAction>
+  ) => {
+    if (charactersToShow) {
+      return;
+    }
+    const data = await getCharactersByPage(page as string);
+    dispatch(
+      setCharactersByPage({
+        characters: data?.results || {},
+        total: data?.count,
+        previous: data?.previous,
+        next: data?.next,
+      })
+    );
+  };
 
   useEffect(() => {
     setPageParam(page);
@@ -60,7 +56,7 @@ const Home: FC = () => {
       return;
     }
     retrieveCharacters(page, dispatch);
-  }, [page, dispatch, isFirstLoad, retrieveCharacters, setPageParam]);
+  }, [page, isFirstLoad]);
 
   return (
     <>
